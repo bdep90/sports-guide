@@ -48,7 +48,7 @@ app.use('/', router);
 
 
 // ==========================
-// other routes
+// users routes
 // ==========================
 
 // user route
@@ -119,6 +119,28 @@ router.delete('/users/:id', (req, res) => {
     })
   })
 })
+
+// ==========================
+// users routes
+// ==========================
+
+// sports index route
+router.get('/sports', (req, res) =>{
+  Sport.find({}, (err, sports) => {
+    if(err) throw err;
+    res.json(sports);
+  });
+})
+
+//sports show route
+router.get('/sports/:id', (req, res) =>{
+  Sport.find({ _id: req.params.id}, (err, sport) => {
+    if(err) throw err;
+
+    res.json(sport);
+  });
+});
+
 
 
 
