@@ -24,4 +24,4 @@ sportSchema.pre('save', (next) => {
 
 
 // EXPORTS
-module.exports = mongoose.model('sport', sportSchema);
+module.exports = mongoose.model('sports', sportSchema);
