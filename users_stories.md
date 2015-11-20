@@ -14,7 +14,6 @@ Rules: `/soccer/rules`
 Teams: `/soccer/teams`
 News: `/soccer/news`
 
-
 BONUS
 - add players to teams
 - chatting feature
