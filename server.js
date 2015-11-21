@@ -23,7 +23,6 @@ let Sport       = require('./models/sports');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-// app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/sportsDB');
@@ -39,6 +38,7 @@ db.once('open', (callback) => {
 // root routes
 // ==========================
 
+app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 let router = express.Router();
 
 router.get('/', (req, res) => {
