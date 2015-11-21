@@ -41,16 +41,16 @@ db.once('open', (callback) => {
 app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 
 app.get('/', (req, res) => {
-  res.send('Got it!');
+  res.redirect('/sports/index.html');
 })
 // app.use('/', router);
 
 app.get('/about', (req, res) => {
-  res.redirect('/about.html');
+  res.redirect('/information/about.html');
 });
 
 app.get('/contact', (req, res) => {
-  res.redirect('/contact.html');
+  res.redirect('/information/contact.html');
 });
 
 app.get('/users/signup', (req, res) => {
@@ -74,6 +74,10 @@ app.get('/users/login', (req, res) => {
 //   // find user
 //   res.redirect('/users/edit.html');
 // });
+
+app.get('/sports/:id', (req, res) =>{
+  res.redirect('/sports/show.html');
+});
 
 
 // ==========================
@@ -170,7 +174,6 @@ router.get('/sports/:id', (req, res) =>{
     res.json(sport);
   });
 });
-
 
 
 
