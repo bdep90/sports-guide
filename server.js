@@ -39,12 +39,21 @@ db.once('open', (callback) => {
 // ==========================
 
 app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
-let router = express.Router();
+// let router = express.Router();
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Got it!');
 })
-app.use('/', router);
+// app.use('/', router);
+
+app.get('/about', (req, res) => {
+  res.redirect('/about.html');
+});
+
+app.get('/contact', (req, res) => {
+  res.redirect('/contact.html');
+});
+
 
 
 // ==========================
