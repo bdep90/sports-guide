@@ -39,7 +39,6 @@ db.once('open', (callback) => {
 // ==========================
 
 app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
-// let router = express.Router();
 
 app.get('/', (req, res) => {
   res.send('Got it!');
@@ -54,11 +53,33 @@ app.get('/contact', (req, res) => {
   res.redirect('/contact.html');
 });
 
+app.get('/users/signup', (req, res) => {
+  res.redirect('/users/signup.html');
+});
+
+app.get('/users/login', (req, res) => {
+  res.redirect('/users/login.html');
+});
+
+// // user show
+// app.get('/users/:id', (req, res) => {
+//   // let user_id = req.params.id;
+//   // find user
+//   res.redirect('/users/show.html');
+// });
+
+// // user edit
+// app.post('/users/:id/edit', (req, res) => {
+//   // let user_id = req.params.id;
+//   // find user
+//   res.redirect('/users/edit.html');
+// });
 
 
 // ==========================
 // users routes
 // ==========================
+let router = express.Router();
 
 // user route
 // user index
