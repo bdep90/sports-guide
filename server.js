@@ -61,6 +61,8 @@ app.get('/users/login', (req, res) => {
   res.redirect('/users/login.html');
 });
 
+
+
 // // user show
 // app.get('/users/:id', (req, res) => {
 //   // let user_id = req.params.id;
@@ -174,6 +176,8 @@ router.get('/sports/:id', (req, res) =>{
     res.json(sport);
   });
 });
+
+
 
 
 
