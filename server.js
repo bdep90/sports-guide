@@ -53,11 +53,11 @@ app.get('/', (req, res) => {
 // app.use('/', router);
 
 app.get('/about', (req, res) => {
-  res.redirect('/information/about.html');
+  res.render('information/about.jade');
 });
 
 app.get('/contact', (req, res) => {
-  res.redirect('/information/contact.html');
+  res.render('information/contact.jade');
 });
 
 app.get('/users/signup', (req, res) => {
