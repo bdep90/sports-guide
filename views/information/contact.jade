@@ -1,0 +1,22 @@
+extends ../layouts
+
+block content
+
+  .col-xs-10.col-xs-offset-1
+    h1.text-center This is Contact
+    form.form-horizontal
+      .form-group
+        label.col-sm-2.control-label(for='Email') EMAIL
+        .col-sm-10
+          input.form-control.col-sm-10(type='email', name='email', placeholder='Email')
+      .form-group
+        label.col-sm-2.control-label(for='title') TITLE
+        .col-sm-10
+          input.form-control(type='text', name='title', placeholder='Title')
+      .form-group
+        label.col-sm-2.control-label(for='message') MESSAGE
+        .col-sm-10
+          textarea.form-control(name='message', rows='10', placeholder='Message')
+      .form-group
+        .col-sm-10.col-sm-offset-2
+          button.btn.btn-primary.form-control(type='submit') Submit
