@@ -1,0 +1,23 @@
+extends ../layouts
+
+block content
+  body.container-fluid
+    // now rendering form //
+    .col-xs-10.col-xs-offset-1
+      h1.text-center SIGN UP
+      form.form-horizontal
+        .form-group
+          label.col-sm-2.control-label(for='username') USERNAME
+          .col-sm-10
+            input#username.form-control(type='username', name='username', placeholder='6 character min')
+        .form-group
+          label.col-sm-2.control-label(for='email') EMAIL
+          .col-sm-10
+            input#email.form-control(type='email', name='email', placeholder='valid email only')
+        .form-group
+          label.col-sm-2.control-label(for='password') PASSWORD
+          .col-sm-10
+            input#password.form-control(type='password', name='password', placeholder='5 character min')
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            button#btn.btn.btn-primary.form-control(type='submit') Update Account

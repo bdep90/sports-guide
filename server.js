@@ -61,11 +61,11 @@ app.get('/contact', (req, res) => {
 });
 
 app.get('/users/signup', (req, res) => {
-  res.redirect('/users/signup.html');
+  res.render('users/signup.jade');
 });
 
 app.get('/users/login', (req, res) => {
-  res.redirect('/users/login.html');
+  res.render('users/login.jade');
 });
 
 
@@ -74,14 +74,14 @@ app.get('/users/login', (req, res) => {
 // app.get('/users/:id', (req, res) => {
 //   // let user_id = req.params.id;
 //   // find user
-//   res.redirect('/users/show.html');
+//   res.render('users/show.jade');
 // });
 
 // // user edit
 // app.post('/users/:id/edit', (req, res) => {
 //   // let user_id = req.params.id;
 //   // find user
-//   res.redirect('/users/edit.html');
+//   res.render('users/edit.jade');
 // });
 
 app.get('/sports/:id', (req, res) =>{
