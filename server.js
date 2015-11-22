@@ -8,6 +8,7 @@ let express     = require('express');
 let path        = require('path');
 let bodyParser  = require('body-parser');
 let logger      = require('morgan');
+let jade        = require('jade');
 let app         = express();
 
 
@@ -24,6 +25,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+// view engine for rendering jade files
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
+
+
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/sportsDB');
 
@@ -38,10 +46,9 @@ db.once('open', (callback) => {
 // root routes
 // ==========================
 
-app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 
 app.get('/', (req, res) => {
-  res.redirect('/sports/index.html');
+  res.render('sports/index.jade');
 })
 // app.use('/', router);
 
