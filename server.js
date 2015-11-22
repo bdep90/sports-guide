@@ -84,8 +84,8 @@ app.get('/users/login', (req, res) => {
 //   res.render('users/edit.jade');
 // });
 
-app.get('/sports/:id', (req, res) =>{
-  res.redirect('/sports/show.html');
+app.get('/sports/1', (req, res) =>{
+  res.render('sports/show.jade');
 });
 
 

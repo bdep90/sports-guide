@@ -2,4 +2,31 @@ extends ../layouts
 
 block content
 
-  h1 Index of Sports / root
+  .jumbotron
+      .container
+        h1 Sports Guide
+        p
+          | This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+        p
+          a.btn.btn-primary.btn-lg(href='/sports/show.html', role='button') See Guides »
+    .container
+      // Example row of columns
+      .row
+        .col-md-4
+          h2 Soccer
+          p
+            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          p
+            a.btn.btn-default(href='/sports/1', role='button') View Guide »
+        .col-md-4
+          h2 American Football
+          p
+            | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+          p
+            a.btn.btn-default(href='#', role='button') View Guide »
+        .col-md-4
+          h2 Tennis
+          p
+            iframe(width='420', height='345', src='http://www.youtube.com/embed/XGSy3_Czz8k')
+          p
+            a.btn.btn-default(href='#', role='button') View Guide »
