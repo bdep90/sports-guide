@@ -1,13 +1,12 @@
 'use strict';
 
 let express = require('express');
-let path    = require('path');
 let mongoose = require('mongoose');
 let User    = require('../models/users.js');
 let router  = express.Router();
 
-// index routes
 
+// index routes
 router.get('/', (req, res, next) =>{
   User.find({}, (err, users) => {
     res.json(users);
