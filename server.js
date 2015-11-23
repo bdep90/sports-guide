@@ -48,7 +48,7 @@ db.once('open', (callback) => {
 
 
 app.get('/', (req, res) => {
-  res.render('sports/index.jade');
+  res.render('index.jade');
 });
 
 
