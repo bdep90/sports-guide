@@ -4,15 +4,15 @@ block content
   // now rendering form //
   .col-xs-10.col-xs-offset-1
     h1.text-center SIGN UP
-    form.form-horizontal
+    form.form-horizontal(method='put', action='/users/#{user._id}')
       .form-group
         label.col-sm-2.control-label(for='username') USERNAME
         .col-sm-10
-          input#username.form-control(type='username', name='username', placeholder='6 character min')
+          input#username.form-control(type='text', name='username', value='#{user.username}')
       .form-group
         label.col-sm-2.control-label(for='email') EMAIL
         .col-sm-10
-          input#email.form-control(type='email', name='email', placeholder='valid email only')
+          input#email.form-control(type='email', name='email', value='#{user.email}')
       .form-group
         label.col-sm-2.control-label(for='password') PASSWORD
         .col-sm-10
