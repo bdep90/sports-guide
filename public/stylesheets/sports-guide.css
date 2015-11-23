@@ -6,7 +6,7 @@
   display: none;
 }
 
-.show {
+.user-show {
   display: none;
 }
 
@@ -15,5 +15,9 @@
 }
 
 .contact {
+  display: none;
+}
+
+.sport-show {
   display: none;
 }

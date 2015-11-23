@@ -11,6 +11,7 @@ let sportsGuide = {
     $('.login-link').on('click', sportsGuide.showLogin);
     $('.about-link').on('click', sportsGuide.showAbout);
     $('.contact-link').on('click', sportsGuide.showContact);
+    $('.soccer-link').on('click', sportsGuide.showSport);
   },
 
   showSignup: (event) => {
@@ -42,12 +43,21 @@ let sportsGuide = {
     $('.contact').show();
   },
 
+  showSport: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetView();
+    $('.sport-show').show();
+  },
+
   resetView: () => {
     $('.signup').hide();
     $('.login').hide();
-    $('.show').hide();
+    $('.user-show').hide();
     $('.about').hide();
     $('.contact').hide();
+    $('.sport-show').hide();
+    $('.sport-index').hide();
   }
 }
 
