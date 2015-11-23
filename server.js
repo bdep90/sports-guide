@@ -50,7 +50,7 @@ db.once('open', (callback) => {
 app.get('/', (req, res) => {
   res.render('sports/index.jade');
 })
-app.use('/', router);
+// app.use('/', router);
 
 app.get('/about', (req, res) => {
   res.render('information/about.jade');
