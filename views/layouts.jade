@@ -23,18 +23,20 @@ html(lang='en')
     // Navbar
     include ./includes/navbar.jade
 
-    block content
+    .results
 
-    ////// users show //////
-    .show
-      include ./users/show.jade
-    
+      block content
 
-    ////// forms will be placed here //////
-    .signup
-      include ./users/signup.jade
-    .login
-      include ./users/login.jade
+      ////// users show //////
+      .show
+        include ./users/show.jade
+
+
+      ////// forms will be placed here //////
+      .signup
+        include ./users/signup.jade
+      .login
+        include ./users/login.jade
 
 
 
@@ -50,5 +52,5 @@ html(lang='en')
     // Bootstrap core javascript
     script(src='../javascripts/bootstrap.js')
 
-    // Frontend javascript for users controller
-    script(src='../javascripts/user.js')
+    // Custom javascript
+    script(src='../javascripts/app.js')
