@@ -9,6 +9,8 @@ let sportsGuide = {
     // let self = this;
     $('.signup-link').on('click', sportsGuide.showSignup);
     $('.login-link').on('click', sportsGuide.showLogin);
+    $('.about-link').on('click', sportsGuide.showAbout);
+    $('.contact-link').on('click', sportsGuide.showContact);
   },
 
   showSignup: (event) => {
@@ -26,10 +28,26 @@ let sportsGuide = {
     $('.login').show();
   },
 
+  showAbout: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetView();
+    $('.about').show();
+  },
+
+  showContact: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetView();
+    $('.contact').show();
+  },
+
   resetView: () => {
     $('.signup').hide();
     $('.login').hide();
     $('.show').hide();
+    $('.about').hide();
+    $('.contact').hide();
   }
 }
 
