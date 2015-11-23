@@ -24,12 +24,12 @@ let Sport       = require('./models/sports');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 
 // view engine for rendering jade files
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(express.static(path.join(__dirname, 'public'))); // require index.html in public folder
 
 
 let mongoose = require('mongoose');
@@ -49,8 +49,8 @@ db.once('open', (callback) => {
 
 app.get('/', (req, res) => {
   res.render('sports/index.jade');
-})
-// app.use('/', router);
+});
+
 
 app.get('/about', (req, res) => {
   res.render('information/about.jade');
@@ -63,105 +63,13 @@ app.get('/contact', (req, res) => {
 
 
 // ==========================
-// users routes
+// other routes
 // ==========================
 let usersRoute = require('./routes/users.js');
+let sportsRoute = require('./routes/sports.js');
+
 app.use('/users', usersRoute);
-
-// user route
-// user index
-// router.get('/users', (req, res) => {
-//   User.find({}, (err, users) => {
-//     res.json(users);
-//   })
-// });
-
-// create a user
-// router.post('/users', (req, res) => {
-//   let newUser = new User({
-//     username: req.body.username,
-//     email:    req.body.email,
-//     password: req.body.password
-//   });
-//
-//   newUser.save((err) => {
-//     if(err) throw err;
-//
-//     console.log('User was successfully created.');
-//     res.status(200).json({
-//       success: true,
-//       message: 'User was successfully created.'
-//     });
-//   });
-// });
-
-// show a user
-// router.get('/users/:id', (req, res) => {
-//   User.findOne({ _id: req.params.id }, (err, user) => {
-//     if(err) throw err;
-//
-//     res.json(user);
-//   });
-// });
-//
-// // update the info for an user
-// router.put('/users/:id', (req, res) => {
-//   User.findById(req.params.id, (err, user) => {
-//     if(err) throw err;
-//
-//     if(req.body.username) user.username = req.body.username;
-//     if(req.body.email) user.email = req.body.email;
-//     if(req.body.password) user.password = req.body.password;
-//
-//     user.save((err) => {
-//       if(err) throw err;
-//
-//       console.log('User was successfully updated.');
-//       res.json({
-//         success: true,
-//         message: 'User was successfully updated.'
-//       });
-//     });
-//   });
-// });
-//
-// // delete an user
-// router.delete('/users/:id', (req, res) => {
-//   User.remove({ _id: req.params.id }, (err, user) => {
-//     if(err) throw err;
-//
-//     res.json({
-//       success: true,
-//       message: 'User was successfully deleted.'
-//     })
-//   })
-// })
-//
-// // ==========================
-// // users routes
-// // ==========================
-//
-// // sports index route
-// router.get('/sports', (req, res) =>{
-//   Sport.find({}, (err, sports) => {
-//     if(err) throw err;
-//     res.json(sports);
-//   });
-// })
-//
-// //sports show route
-// router.get('/sports/:id', (req, res) =>{
-//   Sport.find({ _id: req.params.id}, (err, sport) => {
-//     if(err) throw err;
-//
-//     res.json(sport);
-//   });
-// });
-
-
-
-
-
+app.use('/sports', sportsRoute);
 
 
 
