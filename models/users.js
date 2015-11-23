@@ -1,6 +1,7 @@
 'use strict';
 
 let mongoose = require('mongoose');
+let bcrypt   = require('bcrypt');
 
 let userSchema = new mongoose.Schema({
   username: String,
@@ -9,17 +10,38 @@ let userSchema = new mongoose.Schema({
   created_at: Date,
   updated_at: Date
 
-})
+});
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
+  let currentUser = this;
   let now = new Date();
-  this.updated_at = now;
-  if (!this.created_at) {
-    this.created_at = now;
-  }
-  next();
-})
+  currentUser.updated_at = now;
+  if(!currentUser.created_at) {
+    currentUser.created_at = now;
+  };
 
+  // hash password if it's been modified (or is new)
+  if (!currentUser.isModified('password')) return next();
+  // generate salt
+  bcrypt.genSalt(5, (err, salt) => {
+    if (err) return next(err);
+    // use new salt
+    bcrypt.hash(currentUser.password, salt, (err, hash) => {
+      if (err) return next(err);
+      // replace password placeword w/ hashed one
+      currentUser.password = hash;
+      next();
+    });
+  });
+});
+
+userSchema.methods.authenticate = (password, callback) => {
+  // .authenticate - a compare method that returns boolean
+  // if 1st arg (once encrpted) coresponds to 2nd arg
+  bcrypt.compare(password, this.password, (err, isMatch) => {
+    callback(null, isMatch);
+  });
+};
 
 
 

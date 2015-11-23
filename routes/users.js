@@ -1,9 +1,9 @@
 'use strict';
 
-let express = require('express');
-let mongoose = require('mongoose');
-let User    = require('../models/users.js');
-let router  = express.Router();
+let express   = require('express');
+let mongoose  = require('mongoose');
+let User      = require('../models/users.js');
+let router    = express.Router();
 
 
 // index routes
@@ -38,9 +38,40 @@ router.post('/', (req, res) => {
   });
 });
 
+let userAuth = (req, res) => {
+  let userInfo = req.body.user;
+  // validation for undefined email or password
+  if (userInfo.email == undefined || userInfo.password == undefined) {
+    return res.status(401).send({ message: 'Credentials are incorrect'});
+
+    User.findOne({ email: userInfo.email }, (err, user) => {
+      console.log(user);
+      user.authenticate(userInfo.password, (err, isMatch) => {
+        if (err) throw err;
+      }); // check if password match generated a token
+    });
+  }
+};
+
 // user login - note; add session + bcrypt[tokens]
-router.get('/login', (req, res, next) => {
-  res.render('users/login.jade');
+router.post('/login', userAuth, (req, res, next) => {
+  // res.render('users/login.jade');
+
+  let userInfo = {
+    email: req.body.email,
+    password: req.body.password
+  };
+  User.findOne({ email: userInfo.email }, (err, user) => {
+    user.authenticate(userInfo.password, (err, isMatch) => {
+      if (err) throw err;
+      if (isMatch) {
+        return res.status(200).send({ message: 'authorized'});
+      } else {
+        return res.status(401).send({ message: 'unauthorized'});
+      }
+    });
+  });
+  // res.json(userInfo);
 });
 
 // user show
@@ -85,6 +116,8 @@ router.delete('/:id', (req, res) => {
     })
   })
 })
+
+
 
 
 
