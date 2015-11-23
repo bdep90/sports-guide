@@ -65,8 +65,8 @@ app.get('/contact', (req, res) => {
 // ==========================
 // other routes
 // ==========================
-let usersRoute = require('./routes/users.js');
-let sportsRoute = require('./routes/sports.js');
+let usersRoute = require('./routes/users_controller.js');
+let sportsRoute = require('./routes/sports_controller.js');
 
 app.use('/users', usersRoute);
 app.use('/sports', sportsRoute);
