@@ -11,13 +11,15 @@ let router    = express.Router();
 
 // show route for sports
 
+const SOCCERSECRET = process.env.SOCCERSECRET;
+
 // route is working for api
 router.get('/api', (req, res) => {
   console.log('HITTING sports/1');
   let options = {
-    url:'http://api.football-data.org/v1/soccerseasons/351',
+    url:'http://api.football-data.org/v1/soccerseasons',
     headers: {
-      'X-Auth-Token': '---YOUR TOKEN HERE---'
+      'X-Auth-Token': SOCCERSECRET
     }
   };
 
@@ -26,7 +28,7 @@ router.get('/api', (req, res) => {
       var info = JSON.parse(body);
       console.log(info.league + "meow");
       console.log(info.year + "woof");
-      res.json(info);
+      res.json(info.year);
     }
   });
 });
