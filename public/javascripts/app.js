@@ -12,6 +12,9 @@ let sportsGuide = {
     $('.about-link').on('click', sportsGuide.showAbout);
     $('.contact-link').on('click', sportsGuide.showContact);
     $('.soccer-link').on('click', sportsGuide.showSport);
+    $('button#history').on('click', sportsGuide.showSoccerHistory);
+    $('button#rules').on('click', sportsGuide.showSoccerRules);
+    $('button#facts').on('click', sportsGuide.showSoccerFacts);
   },
 
   showSignup: (event) => {
@@ -48,6 +51,28 @@ let sportsGuide = {
 
     sportsGuide.resetView();
     $('.sport-show').show();
+    $('.soccer-history').show();
+  },
+
+  showSoccerHistory: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-history').show();
+  },
+
+  showSoccerRules: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-rules').show();
+  },
+
+  showSoccerFacts: (event) => {
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-facts').show();
   },
 
   resetView: () => {
@@ -58,7 +83,14 @@ let sportsGuide = {
     $('.contact').hide();
     $('.sport-show').hide();
     $('.sport-index').hide();
+  },
+
+  resetSportView: () => {
+    $('.soccer-history').hide();
+    $('.soccer-rules').hide();
+    $('.soccer-facts').hide();
   }
+
 }
 
 $(() => {
