@@ -4,6 +4,7 @@ let express     = require('express');
 let mongoose    = require('mongoose');
 let jwt         = require('jsonwebtoken');
 let bcrypt      = require('bcrypt');
+let expjwt        = require('express-jwt');
 let User        = require('../models/users.js');
 let router      = express.Router();
 
@@ -54,7 +55,7 @@ router.post('/authenticate', (req, res) => {
     email: req.body.email,
     password: req.body.password
   }
-  
+
   // validation for undefined email or password
   if (userInfo.email == undefined || userInfo.password == undefined) {
     res.status(401).send({ message: 'Credentials are incorrect'});
@@ -108,6 +109,14 @@ router.post('/login', (req, res, next) => {
   // res.json(userInfo);
 });
 
+// user sign out
+router.post('/logout', (req, res) => {
+  return ('Logout', 401, { 'WWW-Authenticate': 'Basic realm="Login required"' });
+  console.log('logged out');
+});
+
+
+
 // user show
 router.get('/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id }, (err, user) => {
@@ -137,7 +146,7 @@ router.put('/:id', (req, res, next) => {
   });
 });
 
-// delete an user
+// delete a user
 router.delete('/:id', (req, res) => {
   User.remove({ _id: req.params.id }, (err, user) => {
     if(err) throw err;
@@ -150,4 +159,9 @@ router.delete('/:id', (req, res) => {
 })
 
 
-module.exports = router;
+// protecting all relevant routes - TO DO: protect sports show news page
+// router.use(jwt({ secret: secret}) )
+
+
+
+module.exports = router; 
