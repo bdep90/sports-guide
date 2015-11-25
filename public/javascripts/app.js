@@ -16,6 +16,8 @@ let sportsGuide = {
     $('button#rules').on('click', sportsGuide.showSoccerRules);
     $('button#facts').on('click', sportsGuide.showSoccerFacts);
     $('button#teams').on('click', sportsGuide.showSoccerTeams); //
+    $('button#teams').on('click', sportsGuide.showSoccerCrest);
+    $('button#teams').on('click', sportsGuide.showSoccerVal);
   },
 
   showSignup: (event) => {
@@ -89,6 +91,42 @@ let sportsGuide = {
       console.log(res);
       // $('.soccer-teams').empty();
       $('.teams').text(res).appendTo('.soccer-teams');
+      // $('.soccer-teams').html(res);
+   });
+
+  },
+
+  showSoccerVal: (event) => {
+    console.log('showSoccer Value...');
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-teams').show();
+    $.ajax({
+      url: "/sports/teamval"
+    })
+    .done(function(res){
+      console.log(res);
+      // $('.soccer-teams').empty();
+      $('.market').text(res).appendTo('.soccer-teams');
+      // $('.soccer-teams').html(res);
+   });
+
+  },
+
+  showSoccerCrest: (event) => {
+    console.log('showSoccer Crest...');
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-teams').show();
+    $.ajax({
+      url: "/sports/teamcrest"
+    })
+    .done(function(res){
+      console.log(res);
+      // $('.soccer-teams').empty();
+      $('.crest').text(res).appendTo('.soccer-teams');
       // $('.soccer-teams').html(res);
    });
 
