@@ -2,7 +2,7 @@
 
 let mongoose = require('mongoose');
 let bcrypt   = require('bcrypt');
-let secret   = 'bison';
+const secret = process.env.SECRET;
 
 let userSchema = new mongoose.Schema({
   username: String,

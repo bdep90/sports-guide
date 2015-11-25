@@ -13,8 +13,7 @@ let nodemailer  = require('nodemailer');
 let expressJWT  = require('express-jwt');
 let app         = express();
 
-// const secret      = process.env.SECRET;
-let secret      = 'bison';
+const secret     = process.env.SECRET;
 
 // ==========================
 // model modules
@@ -99,7 +98,7 @@ app.use('/contact', contactRoute);
 // ==========================
 // server
 // ==========================
-let server = app.listen(3000, () => {
+let server = app.listen(process.env.PORT || 3000, () => {
   let host = server.address().address;
   let port = server.address().port;
 
