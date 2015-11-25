@@ -15,6 +15,7 @@ let sportsGuide = {
     $('button#history').on('click', sportsGuide.showSoccerHistory);
     $('button#rules').on('click', sportsGuide.showSoccerRules);
     $('button#facts').on('click', sportsGuide.showSoccerFacts);
+    $('button#teams').on('click', sportsGuide.showSoccerTeams); //
   },
 
   showSignup: (event) => {
@@ -74,6 +75,24 @@ let sportsGuide = {
     sportsGuide.resetSportView();
     $('.soccer-facts').show();
   },
+  //
+  showSoccerTeams: (event) => {
+    console.log('showSoccer run...');
+    event.preventDefault();
+
+    sportsGuide.resetSportView();
+    $('.soccer-teams').show();
+    $.ajax({
+      url: "/sports/api"
+    })
+    .done(function(res){
+      console.log(res);
+      // $('.soccer-teams').empty();
+      $('.teams').text(res).appendTo('.soccer-teams');
+      // $('.soccer-teams').html(res);
+   });
+
+  },
 
   resetView: () => {
     $('.signup').hide();
@@ -89,6 +108,7 @@ let sportsGuide = {
     $('.soccer-history').hide();
     $('.soccer-rules').hide();
     $('.soccer-facts').hide();
+    $('.soccer-teams').hide(); //
   }
 
 }
