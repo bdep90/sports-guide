@@ -1,10 +1,13 @@
 'use strict';
 
-let express   = require('express');
-let mongoose  = require('mongoose');
-let User      = require('../models/users.js');
-let router    = express.Router();
+let express     = require('express');
+let mongoose    = require('mongoose');
+let jwt         = require('jsonwebtoken');
+let bcrypt      = require('bcrypt');
+let User        = require('../models/users.js');
+let router      = express.Router();
 
+let secret      = 'bison';
 
 // index routes
 router.get('/', (req, res, next) =>{
@@ -29,8 +32,8 @@ router.post('/', (req, res) => {
 
   newUser.save((err) => {
     if(err) throw err;
-
     console.log('User was successfully created.');
+
     res.status(200).json({
       success: true,
       message: 'User was successfully created.'
@@ -38,23 +41,54 @@ router.post('/', (req, res) => {
   });
 });
 
-let userAuth = (req, res) => {
-  let userInfo = req.body.user;
+// var fake = {
+//   _id: '5654ff537b45878d111fb84b',
+//   username: 'bridge',
+//   email: 'bridge@gmail.com',
+//   password: 'bridge'
+// };
+
+// user authentication method
+router.post('/authenticate', (req, res) => {
+  let userInfo = {
+    email: req.body.email,
+    password: req.body.password
+  }
+  
   // validation for undefined email or password
   if (userInfo.email == undefined || userInfo.password == undefined) {
-    return res.status(401).send({ message: 'Credentials are incorrect'});
-
-    User.findOne({ email: userInfo.email }, (err, user) => {
-      console.log(user);
-      user.authenticate(userInfo.password, (err, isMatch) => {
-        if (err) throw err;
-      }); // check if password match generated a token
-    });
+    res.status(401).send({ message: 'Credentials are incorrect'});
   }
-};
+
+  User.findOne({ email: userInfo.email }, (err, user) => {
+    // res.send({ isUser: true,
+    //             data: user});
+
+    user.authenticate(userInfo.password, function(err, isMatch) {
+      if(err) res.json({ error: true });
+      else {
+
+      // res.json({ res: isMatch });
+      // check if password match generated a token
+        if (isMatch) {
+          let token = jwt.sign(user, secret);
+          res.json({
+            success: true,
+            message: 'Got token!',
+            token: token
+          });
+        }
+        else {
+          res.status(401).send({ message: 'Credentials are incorrect' });
+        }
+      }
+    });
+  });
+});
+//
 
 // user login - note; add session + bcrypt[tokens]
-router.post('/login', userAuth, (req, res, next) => {
+router.post('/login', (req, res, next) => {
   // res.render('users/login.jade');
 
   let userInfo = {
@@ -77,11 +111,9 @@ router.post('/login', userAuth, (req, res, next) => {
 // user show
 router.get('/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id }, (err, user) => {
-      if(err) throw err;
-
+      if (err) throw err;
       res.json(user);
     });
-
 });
 
 // user edit
@@ -95,8 +127,8 @@ router.put('/:id', (req, res, next) => {
 
     user.save((err) => {
       if(err) throw err;
-
       console.log('User was successfully updated.');
+
       res.json({
         success: true,
         message: 'User was successfully updated.'
@@ -116,9 +148,6 @@ router.delete('/:id', (req, res) => {
     })
   })
 })
-
-
-
 
 
 module.exports = router;
