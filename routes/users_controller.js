@@ -8,7 +8,7 @@ let expjwt        = require('express-jwt');
 let User        = require('../models/users.js');
 let router      = express.Router();
 
-let secret      = 'bison';
+const secret     = process.env.SECRET;
 
 // index routes
 router.get('/', (req, res, next) =>{
@@ -164,4 +164,4 @@ router.delete('/:id', (req, res) => {
 
 
 
-module.exports = router; 
+module.exports = router;
