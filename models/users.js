@@ -2,6 +2,7 @@
 
 let mongoose = require('mongoose');
 let bcrypt   = require('bcrypt');
+let secret   = 'bison';
 
 let userSchema = new mongoose.Schema({
   username: String,
@@ -21,12 +22,13 @@ userSchema.pre('save', function (next) {
   };
 
   // hash password if it's been modified (or is new)
-  if (!currentUser.isModified('password')) return next();
+  // if (!currentUser.isModified('password')) return next();
+  if (!currentUser.isModified('password')) return next()
   // generate salt
   bcrypt.genSalt(5, (err, salt) => {
     if (err) return next(err);
     // use new salt
-    bcrypt.hash(currentUser.password, salt, (err, hash) => {
+    bcrypt.hash(secret, salt, (err, hash) => {
       if (err) return next(err);
       // replace password placeword w/ hashed one
       currentUser.password = hash;
@@ -35,10 +37,10 @@ userSchema.pre('save', function (next) {
   });
 });
 
-userSchema.methods.authenticate = (password, callback) => {
+userSchema.methods.authenticate = function(password, callback) {
   // .authenticate - a compare method that returns boolean
   // if 1st arg (once encrpted) coresponds to 2nd arg
-  bcrypt.compare(password, this.password, (err, isMatch) => {
+  bcrypt.compare(secret, this.password, function(err, isMatch) {
     callback(null, isMatch);
   });
 };

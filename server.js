@@ -10,9 +10,11 @@ let logger      = require('morgan');
 let bodyParser  = require('body-parser');
 let jade        = require('jade');
 let nodemailer  = require('nodemailer');
-
+let expressJWT  = require('express-jwt');
 let app         = express();
 
+// const secret      = process.env.SECRET;
+let secret      = 'bison';
 
 // ==========================
 // model modules
@@ -47,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // require index.html i
 // ==========================
 
 let mongoose      = require('mongoose');
-mongoose.connect('mongodb://localhost/sportsDB');
+mongoose.connect( process.env.MONGOLAB_URI || 'mongodb://localhost/sportsDB');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -81,6 +83,14 @@ let usersRoute    = require('./routes/users_controller');
 let sportsRoute   = require('./routes/sports_controller');
 let contactRoute  = require('./routes/contact_controller')
 
+// app.use('/users/authenticate', expressJWT({ secret: secret,
+// userProperty: 'auth' }));
+// app.use((error, req, res, next) => { //edit err msg
+//   if (error.name === 'UnauthorizedError') {
+//     res.status(401)
+//     .json({ message: 'You need an Auth token!' });
+//   }
+// });
 app.use('/users', usersRoute);
 app.use('/sports', sportsRoute);
 app.use('/contact', contactRoute);
