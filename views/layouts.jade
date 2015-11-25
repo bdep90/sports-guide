@@ -1,0 +1,68 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    // The above 3 meta tags ​*must*​ come first in the head; any other head content must come ​*after*​ these tags
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='icon', href='../images/favicon.ico')
+    title Sports-Guide
+
+    // Bootstrap core CSS
+    link(href='../stylesheets/bootstrap.css', rel='stylesheet')
+
+    // Custom styles for this template
+    link(href='../stylesheets/sports-guide.css', rel='stylesheet')
+
+  body
+
+    // Navbar
+    include ./includes/navbar.jade
+
+    .results
+
+      ////// sports index view //////
+      .sport-index
+        include ./sports/index.jade
+
+      ////// information show //////
+      .about
+        include ./information/about.jade
+      .contact
+        include ./information/contact.jade
+
+      ////// users show //////
+      .user-show
+        include ./users/show.jade
+
+      ////// soccer show //////
+
+      .sport-show
+        include ./sports/show.jade
+
+      ////// forms will be placed here //////
+      .signup
+        include ./users/signup.jade
+      .login
+        include ./users/login.jade
+
+
+
+
+
+    // Footer
+    include ./includes/footer.jade
+
+
+    // JQuery core javascript
+    script(src='../javascripts/jquery-migrate-1.2.1.min.js')
+
+    // Bootstrap core javascript
+    script(src='../javascripts/bootstrap.js')
+
+    // Custom javascript
+    script(src='../javascripts/app.js')
