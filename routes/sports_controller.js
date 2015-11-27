@@ -78,9 +78,12 @@ router.get('/api', (req, res) => {
       var threeCrest = JSON.parse(body).teams[10].crestUrl;
       var fourCrest = JSON.parse(body).teams[17].crestUrl;
       var fiveCrest = JSON.parse(body).teams[19].crestUrl;
-      var sixCrest = JSON.parse(body).teams[19].crestUrl;
-      console.log("processing");
-      res.send(oneCrest + twoCrest + threeCrest + fourCrest + fiveCrest + sixCrest);
+      var sixCrest = JSON.parse(body).teams[12].crestUrl;
+      console.log(oneCrest, twoCrest, threeCrest);
+      let crestArray = [];
+      crestArray.push(oneCrest, twoCrest, threeCrest, fourCrest, fiveCrest, sixCrest)
+      console.log(crestArray);
+      res.send(crestArray);
     }
     });
   });
