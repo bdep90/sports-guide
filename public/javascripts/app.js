@@ -123,13 +123,17 @@ let sportsGuide = {
     $.ajax({
       url: "/sports/teamcrest"
     })
-    .done(function(res){
-      console.log(res);
-      // $('.soccer-teams').empty();
-      $('.crest').text(res).appendTo('.soccer-teams');
-      // $('.soccer-teams').html(res);
-   });
+    .done(function(res) {
+      jQuery.each(res, (index, value) => {
+        console.log(index);
+        let img = $('<img src=" ' + value + '"></img>');
+        img.appendTo('.logo');
+        // $('.team-crest').
+      })
 
+
+      // $('img').attr('src', res).appendTo('.soccer-teams');
+    });
   },
 
   resetView: () => {
