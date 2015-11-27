@@ -82,7 +82,6 @@ router.get('/api', (req, res) => {
       console.log(oneCrest, twoCrest, threeCrest);
       let crestArray = [];
       crestArray.push(oneCrest, twoCrest, threeCrest, fourCrest, fiveCrest, sixCrest)
-      console.log(crestArray);
       res.send(crestArray);
     }
     });
