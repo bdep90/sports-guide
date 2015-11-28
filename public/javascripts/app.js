@@ -77,27 +77,39 @@ let sportsGuide = {
     sportsGuide.resetSportView();
     $('.soccer-facts').show();
   },
-  //
-  showSoccerTeams: (event) => {
-    console.log('showSoccer run...');
-    event.preventDefault();
 
+
+  //////////////////////////////////
+  //----November 28th---Below----//
+  ////////////////////////////////
+  showSoccerTeams: (event) =>{
+    console.log('showTeam run...');
+    event.preventDefault();
     sportsGuide.resetSportView();
     $('.soccer-teams').show();
     $.ajax({
       url: "/sports/api"
     })
     .done(function(res){
-      console.log(res);
-      // $('.soccer-teams').empty();
-      $('.teams').text(res).appendTo('.soccer-teams');
-      // $('.soccer-teams').html(res);
-   });
-
+      jQuery.each(res, (index, value) => {
+        // console.log(index);
+        let p = $('<p>" ' + value + ' "</p>');
+        p.appendTo('.teams');
+      })
+    });
   },
+  ///////////////////////////////////
+  //--November 28th above --------//
+  /////////////////////////////////
+
+
+
+  //////////////////////////////////
+  //----November 28th---Below----//
+  ////////////////////////////////
 
   showSoccerVal: (event) => {
-    console.log('showSoccer Value...');
+    console.log('showSoccer val run');
     event.preventDefault();
 
     sportsGuide.resetSportView();
@@ -106,13 +118,18 @@ let sportsGuide = {
       url: "/sports/teamval"
     })
     .done(function(res){
-      console.log(res);
-      // $('.soccer-teams').empty();
-      $('.market').text(res).appendTo('.soccer-teams');
-      // $('.soccer-teams').html(res);
-   });
-
+      jQuery.each(res, (index, value) => {
+        console.log(index);
+        let p = $('<p>" ' + value + ' "</p>');
+        p.appendTo('.market');
+      })
+    });
   },
+  ///////////////////////////////////
+  //--November 28th above --------//
+  /////////////////////////////////
+
+
 
   showSoccerCrest: (event) => {
     console.log('showSoccer Crest...');
