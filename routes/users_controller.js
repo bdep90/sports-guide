@@ -4,11 +4,11 @@ let express     = require('express');
 let mongoose    = require('mongoose');
 let jwt         = require('jsonwebtoken');
 let bcrypt      = require('bcrypt');
-let expjwt        = require('express-jwt');
+let expjwt      = require('express-jwt');
 let User        = require('../models/users.js');
 let router      = express.Router();
 
-const secret     = process.env.SECRET;
+const secret    = process.env.SECRET;
 
 // index routes
 router.get('/', (req, res, next) =>{
@@ -24,7 +24,6 @@ router.get('/signup', (req, res, next) => {
 
 //create a user
 router.post('/', (req, res) => {
-
   let newUser = new User({
     username: req.body.username,
     email:    req.body.email,
@@ -68,7 +67,6 @@ router.post('/authenticate', (req, res) => {
     user.authenticate(userInfo.password, function(err, isMatch) {
       if(err) res.json({ error: true });
       else {
-
       // res.json({ res: isMatch });
       // check if password match generated a token
         if (isMatch) {
@@ -91,7 +89,6 @@ router.post('/authenticate', (req, res) => {
 // user login - note; add session + bcrypt[tokens]
 router.post('/login', (req, res, next) => {
   // res.render('users/login.jade');
-
   let userInfo = {
     email: req.body.email,
     password: req.body.password
@@ -106,7 +103,7 @@ router.post('/login', (req, res, next) => {
       }
     });
   });
-  // res.json(userInfo);
+  res.redirect('/sports/soccer');
 });
 
 // user sign out
@@ -114,8 +111,6 @@ router.post('/logout', (req, res) => {
   return ('Logout', 401, { 'WWW-Authenticate': 'Basic realm="Login required"' });
   console.log('logged out');
 });
-
-
 
 // user show
 router.get('/:id', (req, res, next) => {
