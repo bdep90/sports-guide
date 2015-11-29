@@ -55,8 +55,8 @@ let sportsGuide = {
     })
     .done((data) => {
       $('.tweets').empty();
-      for(var j = 0; j < data.length; j--) {
-        for (var i = 0; i <= 9; i++) {
+      for(var j = data.length -1; j > -1; j--) {
+        for (var i = 0; i < data[j].statuses.length; i++) {
           let p = $('<p class="ind-tweets">' + '<strong>' + '@'+ data[j].statuses[i].user.screen_name + '</strong>' + ": " + data[j].statuses[i].text + '<br>' + data[j].statuses[i].created_at + '</p>');
           p.appendTo('.tweets');
         };
