@@ -81,6 +81,7 @@ app.get('/', (req, res) => {
 let usersRoute    = require('./routes/users_controller');
 let sportsRoute   = require('./routes/sports_controller');
 let contactRoute  = require('./routes/contact_controller')
+let newsRoute     = require('./routes/news_controller')
 
 // app.use('/users/authenticate', expressJWT({ secret: secret,
 // userProperty: 'auth' }));
@@ -93,7 +94,7 @@ let contactRoute  = require('./routes/contact_controller')
 app.use('/users', usersRoute);
 app.use('/sports', sportsRoute);
 app.use('/contact', contactRoute);
-
+app.use('/', newsRoute);
 
 // ==========================
 // server

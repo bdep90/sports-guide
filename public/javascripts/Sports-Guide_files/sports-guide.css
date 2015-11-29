@@ -1,0 +1,109 @@
+/* HOMEPAGE BODY */
+h1.pics{
+  color: rgb(50, 120, 180);
+  font-size: 50px;
+}
+
+#pics {
+  text-align: center;
+  list-style: none;
+}
+
+.pics {
+  display: inline-block;
+  padding: 0px 10px 10px 10px;
+}
+
+.tweets {
+  overflow: scroll;
+  height: 700px;
+}
+
+/* HOMEPAGE FOOTER */
+.about {
+  display: none;
+}
+
+.contact {
+  display: none;
+}
+
+
+/* USER SHOW (INACTIVE) */
+.user-show {
+  display: none;
+}
+
+
+/* ALL FORMS */
+.signup {
+  display: none;
+}
+
+.login {
+  display: none;
+}
+
+.edit {
+  display: none;
+}
+
+
+/* SOCCER SHOW: BUTTON SUBHEADER */
+.sport-show {
+  display: none;
+}
+
+
+/* SOCCER SHOW: BODY */
+.soccer-history {
+  display: none;
+  margin: 0 auto;
+  overflow: auto;
+  width: 1000px;
+}
+
+.soccer-rules {
+  display: none;
+}
+
+.soccer-facts{
+  display: none;
+}
+
+.soccer-teams{
+  display: none;
+}
+
+/* SOCCER SHOW: BODY INFORMATION */
+#soccer-history-p {
+  float: left;
+  display: block;
+  width: 750px;
+}
+
+#soccer-history-pic {
+  float: right;
+  display: block;
+  width: 250px;
+}
+
+p.p {
+  font-size: 16px;
+}
+
+li.rules {
+  padding: 5px 0px 5px 0px;
+  font-size: 18px;
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAaVBMVEX///8AAACurq76+vqVlZXx8fHKysrd3d2ysrIfHx9WVladnZ3X19eEhISzs7Oqqqr09PQaGhqPj4/T09Pn5+c9PT0qKip2dnYPDw/CwsJRUVGJiYmjo6M5OTldXV1ycnJnZ2cwMDBFRUXNM/kYAAAArElEQVQYlS1PiRbDIAgLnp1We9jLnW3//yMH3eLTBNCAAKO+F1OzcvjBBqJRRNy1UL9uwSmR2Ucho41UXY0FOgPF1YkTIxG1QOvR8WKcnHgwN2j0zjxxTIcYQAVKfVZpo8F0rV1wcClyyZ1sVWbCSrRd42Q55gHdQMs1zjXnLaC8QxJ9NW8+fC9Z+K6Nt7lOqhc33fB+SVuFp5V3Ons8OB69sf//FhNSuq9V9Bfm1wd/FNfhQAAAAABJRU5ErkJggg==');
+}
+
+.soccer-rules-pic {
+  text-align: center;
+}
+
+li.facts {
+  padding: 5px 0px 5px 0px;
+  font-size: 18px;
+  list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAaVBMVEX///8AAACurq76+vqVlZXx8fHKysrd3d2ysrIfHx9WVladnZ3X19eEhISzs7Oqqqr09PQaGhqPj4/T09Pn5+c9PT0qKip2dnYPDw/CwsJRUVGJiYmjo6M5OTldXV1ycnJnZ2cwMDBFRUXNM/kYAAAArElEQVQYlS1PiRbDIAgLnp1We9jLnW3//yMH3eLTBNCAAKO+F1OzcvjBBqJRRNy1UL9uwSmR2Ucho41UXY0FOgPF1YkTIxG1QOvR8WKcnHgwN2j0zjxxTIcYQAVKfVZpo8F0rV1wcClyyZ1sVWbCSrRd42Q55gHdQMs1zjXnLaC8QxJ9NW8+fC9Z+K6Nt7lOqhc33fB+SVuFp5V3Ons8OB69sf//FhNSuq9V9Bfm1wd/FNfhQAAAAABJRU5ErkJggg==');
+}
