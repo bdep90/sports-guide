@@ -14,6 +14,21 @@ h1.pics{
   padding: 0px 10px 10px 10px;
 }
 
+.news {
+  display: none;
+}
+
+.tweets {
+  overflow: scroll;
+  height: 500px;
+  background-color: cornsilk;
+  padding: 15px;
+  font-size: 15px;
+}
+
+.ind-tweets {
+  padding: 5px 0px 10px 0px;
+}
 
 /* HOMEPAGE FOOTER */
 .about {

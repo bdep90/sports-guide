@@ -10,6 +10,7 @@ let sportsGuide = {
     $('.login-link').on('click', sportsGuide.showLogin);
     $('.about-link').on('click', sportsGuide.showAbout);
     $('.contact-link').on('click', sportsGuide.showContact);
+    $('.news-link').on('click', sportsGuide.showTweets);
     $('.edit-link').on('click', sportsGuide.showEdit);
     $('button.btn.btn-primary.form-control').on('click', sportsGuide.showSoccer);
     $('button#history').on('click', sportsGuide.showSoccerHistory);
@@ -44,6 +45,25 @@ let sportsGuide = {
     sportsGuide.resetView();
     $('.contact').show();
   },
+
+  showTweets: (events) => {
+    event.preventDefault();
+    sportsGuide.resetView();
+    $('.news').show();
+    $.ajax({
+      url: "/tweets"
+    })
+    .done((data) => {
+      $('.tweets').empty();
+      for(var j = 0; j < data.length; j--) {
+        for (var i = 0; i <= 9; i++) {
+          let p = $('<p class="ind-tweets">' + '<strong>' + '@'+ data[j].statuses[i].user.screen_name + '</strong>' + ": " + data[j].statuses[i].text + '<br>' + data[j].statuses[i].created_at + '</p>');
+          p.appendTo('.tweets');
+        };
+      };
+    });
+  },
+
 
   showEdit: (event) => {
     event.preventDefault();
@@ -135,6 +155,7 @@ let sportsGuide = {
     $('.user-show').hide();
     $('.about').hide();
     $('.contact').hide();
+    $('.news').hide();
     $('.sport-show').hide();
     $('.sport-index').hide();
   },
