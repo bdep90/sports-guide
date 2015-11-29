@@ -38,6 +38,8 @@ router.post('/', (req, res) => {
       success: true,
       message: 'User was successfully created.'
     });
+    // return res.render('signup', {newUser: newUser});
+
   });
 });
 
@@ -98,6 +100,7 @@ router.post('/login', (req, res, next) => {
       if (err) throw err;
       if (isMatch) {
         return res.status(200).send({ message: 'authorized'});
+        return res.render('login', {userInfo: userInfo});
       } else {
         return res.status(401).send({ message: 'unauthorized'});
       }
