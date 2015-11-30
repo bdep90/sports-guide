@@ -1,25 +1,19 @@
 ### Sports Guide
 
+Users and guests can...
+- access`About` page for more information on the purpose/mission of the site
+- access `Contact Us` page, where they can send dev team an email
+- access `News` page, which renders live sports tweets
+
 Users can...
 - create, edit, delete, and sign in and out of an account (variables: `username`, `email`, `password`).
 - log in and out of their account.
-- view list of sports on the `/index` page
-- view the individual sport on `/sport_name`
+- view soccer `/index` page
 
-Sports:
-- the sport page will render sport `history` and links to the following views: `rules`, `teams`, and `news`
+The sports page will
+- render individual sport `history` and grant access to the  following views: `rules`, `facts`, and `teams`
 
-History `/soccer/history`
-Rules: `/soccer/rules`
-Teams: `/soccer/teams`
-News: `/soccer/news`
-
-BONUS
-- add players to teams
+Future Features:
+- comments/articles feature
 - chatting feature
-- another sport or two
-- UPTIME ROBOT
-
-
-README
-Models: user, sport, news, comment  
+- access to additional sports

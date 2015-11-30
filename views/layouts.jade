@@ -34,6 +34,8 @@ html(lang='en')
         include ./information/about.jade
       .contact
         include ./information/contact.jade
+      .news
+        include ./information/news.jade
 
       ////// users show //////
       .user-show
@@ -49,14 +51,11 @@ html(lang='en')
         include ./users/signup.jade
       .login
         include ./users/login.jade
-
-
-
-
+      .edit
+        include ./users/edit.jade
 
     // Footer
     include ./includes/footer.jade
-
 
     // JQuery core javascript
     script(src='../javascripts/jquery-migrate-1.2.1.min.js')
