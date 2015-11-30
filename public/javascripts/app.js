@@ -117,7 +117,7 @@ let sportsGuide = {
 
           let $teamNameDiv = $("<div></div>");
           $teamNameDiv.addClass('col-md-4 text-center');
-          let $teamName = $('<p></p>');
+          let $teamName = $('<h3></h3>');
           $teamName.text(team['name']);
           $teamNameDiv.append($teamName);
 
@@ -128,7 +128,7 @@ let sportsGuide = {
           $teamCrestDiv.append($teamCrest);
 
           let $teamMarketValueDiv = $("<div class='col-md-4'></div>");
-          let $teamMarketValue = $("<p></p>");
+          let $teamMarketValue = $("<h3 class='text-center'></h3>");
           // console.log(team['squadMarketValue']);
           $teamMarketValue.text(team['squadMarketValue']);
           $teamMarketValueDiv.append($teamMarketValue);
@@ -187,19 +187,19 @@ showSoccerPlayerInfo: (event) => {
       $playerListDiv.empty();
 
       // render header for the player list
-      let $playerNameDiv = $("<div></div>");
+      let $playerNameDiv = $("<div class='row'></div>");
       $playerNameDiv.addClass('col-md-4 text-center');
-      let $playerName = $('<p>Name</p>');
+      let $playerName = $("<h3 class='text-center'>Name</h3>");
       $playerNameDiv.append($playerName);
 
       let $playerPositionDiv = $("<div></div>");
       $playerPositionDiv.addClass('col-md-4 text-center');
-      let $playerPosition = $('<p>Position</p>');
+      let $playerPosition = $("<h3 class='text-center'>Position</h3>");
       $playerPositionDiv.append($playerPosition)
 
       let $playerNationalityDiv = $("<div></div>");
       $playerNationalityDiv.addClass('col-md-4 text-center');
-      let $playerNationality = $('<p>Nationality</p>');
+      let $playerNationality = $("<h3 class='text-center'>Nationality</h3>");
       $playerNationalityDiv.append($playerNationality);
 
 
