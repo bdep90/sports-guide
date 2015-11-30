@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
       success: true,
       message: 'User was successfully created.'
     });
-    // return res.render('signup', {newUser: newUser});
+    return res.render('signup', {newUser: newUser});
 
   });
 });
