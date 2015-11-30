@@ -140,8 +140,8 @@ router.post('/send', (req, res, next) => {
     service: 'Gmail',
     auth: {
       // change the following auth datoa real one
-      user: 'support@gmail.com',
-      pass: 'passwords'
+      user: 'swryu0906@gmail.com',
+      pass: 'password'
     }
   });
 
