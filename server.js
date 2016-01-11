@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // require index.html i
 // ==========================
 
 let mongoose      = require('mongoose');
-mongoose.connect( process.env.MONGOLAB_URI || 'mongodb://localhost/sportsDB');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/sportsDB');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
