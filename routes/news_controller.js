@@ -14,11 +14,11 @@ const TWITTOKEN = process.env.TWITTOKEN;
 const TWITTOKENSECRET = process.env.TWITTOKENSECRET;
 
 // ///////// config
-let connectionString  = process.env.MONGO_URL ? process.env.MONGO_URL + '/tweets' : 'tweets';
+let connectionString  = process.env.MONGOLAB_URI || 'mongodb://localhost/tweets';
 let collectionName    = 'SoccerTweets';
 let hashtag           = '#Soccer';
 
-let db = mongojs(connectionString, [collectionName]);
+let db = mongojs(connectionString, [collectionName], {authMechanism: 'ScramSHA1'});
 
 let client = new Twitter({
     consumer_key: TWITKEY,
