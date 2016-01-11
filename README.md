@@ -48,4 +48,4 @@ We implemented `Bootstrap` and `Jade` in our front-end, and we implemented `Node
 Sports Guide Dev Team:  
 [bdep90](https://github.com/bdep90)  
 [swryu0906](https://github.com/swryu0906)  
-[nasir789](https://github.com/nasir789)
+[nasir789](https://github.com/nasir789) 
