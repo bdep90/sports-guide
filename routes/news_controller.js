@@ -14,7 +14,7 @@ const TWITTOKEN = process.env.TWITTOKEN;
 const TWITTOKENSECRET = process.env.TWITTOKENSECRET;
 
 // ///////// config
-let connectionString = process.env.MONGOLAB_URI || 'mongodb://localhost/tweets';
+let connectionString  = process.env.MONGOLAB_URI || 'mongodb://localhost/tweets';
 let collectionName    = 'SoccerTweets';
 let hashtag           = '#Soccer';
 
@@ -27,9 +27,8 @@ let client = new Twitter({
     access_token_secret: TWITTOKENSECRET
 });
 
-client.get('search/tweets', {q: 'soccer', count: 10}, function(error, tweets, response){
+client.get('/search/tweets', {q: 'soccer', count: 10}, function(error, tweets, response){
   if (error) throw error;
-  console.log('ERROR THROWN IS ' + error);
   db.SoccerTweets.insert(tweets);
 });
 
